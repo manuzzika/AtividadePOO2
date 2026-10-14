@@ -4,11 +4,14 @@ namespace AtividadePOO2.Core;
 
 public class Livro
 {
+   public string Id { get; private set; }
     public string Titulo { get; private set; }
     public string NomeAutora { get; private set; }
     public int Paginas { get; private set; }
     public string Sinopse { get; private set; }
     public string? Sumario { get; private set; }
+    
+    public string Categoria { get; private set; }
 
 
     public Livro(string titulo, string nomeAutora, string pagina, string sinopse)
@@ -41,6 +44,14 @@ public class Livro
 
         Titulo = titulo;
     }
+
+    private void ValidarCategoria(string categoria)
+    {
+        if (string.IsNullOrWhiteSpace(categoria))
+            throw new Exception("Informar uma categoria é obrigatorio!");
+
+        Categoria = categoria;
+    }
     
     private void ValidarNomeAutora(string nomeAutora)
     {
@@ -64,6 +75,8 @@ public class Livro
 
         Sinopse = sinopse;
     }
+    
+    
 }
 
 
